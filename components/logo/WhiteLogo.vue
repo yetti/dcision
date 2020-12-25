@@ -2,7 +2,6 @@
   <svg
     class="thumb"
     width="200"
-    height="200"
     viewBox="0,0,600,600"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"

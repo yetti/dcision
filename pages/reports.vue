@@ -96,7 +96,7 @@ export default {
     },
   },
   mounted() {
-    this.setTitle('Dashboard')
+    this.setTitle('Reports')
   },
   methods: {
     ...mapMutations({

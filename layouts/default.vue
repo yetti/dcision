@@ -1,46 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      :mini-variant="miniVariant"
-      fixed
-      app
-      class="deep-purple accent-4"
-      dark
-    >
-      <v-list-item>
-        <v-list-item-content>
-          <white-logo />
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-      <template #append>
-        <v-list>
-          <v-list-item @click.stop="miniVariant = !miniVariant">
-            <v-list-item-content>
-              <v-icon>mdi-arrow-left-right-bold</v-icon>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </template>
-    </v-navigation-drawer>
+    <Sidebar />
     <v-app-bar fixed app>
       <v-toolbar-title v-text="title" />
       <v-spacer />
@@ -54,29 +14,25 @@
 </template>
 
 <script>
-import WhiteLogo from '@/components/logo/WhiteLogo'
+import { mapMutations } from 'vuex'
+import Sidebar from '@/components/Sidebar'
 
 export default {
   components: {
-    WhiteLogo,
+    Sidebar,
   },
-  data() {
-    return {
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Dashboard',
-          to: '/',
-        },
-        {
-          icon: 'mdi-file-document-multiple-outline',
-          title: 'Reports',
-          to: '/inspire',
-        },
-      ],
-      miniVariant: false,
-      title: 'Dcision',
-    }
+  computed: {
+    title() {
+      return this.$store.state.title
+    },
+  },
+  mounted() {
+    this.title = ''
+  },
+  methods: {
+    ...mapMutations({
+      title: 'setTitle',
+    }),
   },
 }
 </script>
