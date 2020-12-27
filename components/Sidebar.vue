@@ -3,7 +3,7 @@
     :mini-variant="minifiedSidebar"
     fixed
     app
-    class="deep-purple accent-4"
+    class="blue accent-4"
     dark
   >
     <v-list-item>
